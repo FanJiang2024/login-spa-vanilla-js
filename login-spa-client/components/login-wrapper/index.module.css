@@ -1,0 +1,53 @@
+.login-wrapper {
+  width: 350px;
+  height: 350px;
+  border-radius: 1rem;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.left-arrow-icon {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.close-icon {
+  background-color: transparent;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.login-method-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  gap: 2rem;
+}
+
+.login-btn {
+  width: 15rem;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+}

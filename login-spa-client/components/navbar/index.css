@@ -1,0 +1,15 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.navbar .nav .nav-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
