@@ -1,7 +1,6 @@
 import "./style.css";
 import { setupNavbar } from "./components/navbar/index.js";
 import { setupPageRoot } from "./components/page-root/index.js";
-import { setupModal } from "./components/modal/index.js";
 
 const app = document.querySelector("#app");
 

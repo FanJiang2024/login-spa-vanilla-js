@@ -1,7 +1,7 @@
 import { createRoute, navigate } from "../../router/util";
-import "./index.css";
 import { replaceNodes } from "../../lib";
 import { routes } from "../../router";
+import { uiPageRoot } from "./ui";
 
 export const pageContent = (element) => {
   const validRoutes = routes.map((route) => route.path);
@@ -32,7 +32,7 @@ export const pageContent = (element) => {
 };
 
 export const setupPageRoot = (pageRoot) => {
-  const page = pageContent(pageRoot);
+  const page = pageContent(uiPageRoot(pageRoot));
 
   window.onload = () => {
     // 监听 history.pushState、history.replaceState 动作

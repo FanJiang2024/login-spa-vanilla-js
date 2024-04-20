@@ -1,13 +1,20 @@
 import { pageBlink } from "../lib";
 
 export const navigate = (to, replace = false) => {
-  if (replace) {
-    window.history.replaceState({}, "", to);
+  if(typeof to === "string") {
+    if (replace) {
+      window.history.replaceState({}, "", to);
+    } else {
+      window.history.pushState({}, "", to);
+    }
+
+    const navigationEvent = new PopStateEvent("navigate");
+    window.dispatchEvent(navigationEvent);
+  } else if(typeof to === "number") {
+    window.history.go(to);
   } else {
-    window.history.pushState({}, "", to);
+    console.warn("wrong paramater to: ", to);
   }
-  const navigationEvent = new PopStateEvent("navigate");
-  window.dispatchEvent(navigationEvent);
 }; 
 
 const createRouteHoc = () => {
@@ -26,19 +33,17 @@ const createRouteHoc = () => {
           .then((res) => {
             console.log("loader data: ", res);
             map.set(path, res);
-            pathRef.path = window.location.pathname;
             const content = pageFn();
             return content;
           })
           .catch((err) => {
             console.log("loader error: ", err);
-            switch (err.status) {
-              case 401: {
-                alert(err.msg);
-              }
-            }
+            navigate(-1);
             return;
-          });
+          })
+          .finally(() => {
+            pathRef.path = window.location.pathname;
+          })
       }
 
       pathRef.path = window.location.pathname;

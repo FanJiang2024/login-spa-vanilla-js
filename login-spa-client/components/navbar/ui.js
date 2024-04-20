@@ -1,4 +1,5 @@
-import "./index.css"
+import { setupClass } from "../../lib";
+import classes from "./index.module.css";
 
 export const uiNavbar = (navbar) => {
   navbar.innerHTML = `
@@ -14,4 +15,6 @@ export const uiNavbar = (navbar) => {
       </ul>
     </nav>
   `;
+
+  setupClass(navbar, classes);
 }
