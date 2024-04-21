@@ -1,6 +1,7 @@
 import { setupLoginByPhone } from "../login-by-phone";
 import { uiLoginWrapper } from "./ui"
 import classes from "./index.module.css";
+import { setupLoginByPassword } from "../login-by-password";
 
 export const setupLoginWrapper = (parent) => {
   const loginWrapper = uiLoginWrapper();
@@ -26,7 +27,7 @@ export const setupLoginWrapper = (parent) => {
     },
     {
       btn: loginByPassword,
-      componentFn: () => "loginByPassword",
+      componentFn: setupLoginByPassword,
     },
     {
       btn: loginByScan,

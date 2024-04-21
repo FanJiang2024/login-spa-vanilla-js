@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 2rem;
+  box-sizing: border-box;
 }
 
 .left-arrow-icon {

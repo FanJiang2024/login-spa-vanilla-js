@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1.5rem;
   align-items: start;
-  padding: .5rem;
+  padding: 1rem;
 }
 
 .col {
@@ -16,17 +16,8 @@
   align-items: center;
 }
 
-.get-code-wrapper {
-  margin-top: 1rem;
-  display: flex;
-}
-
-.align-right {
-  justify-content: right;
-}
-
 .label {
-  min-width: 6rem;
+  min-width: 4rem;
   text-align: right;
 }
 
@@ -42,13 +33,24 @@
 
 .err-msg {
   text-align: left;
-  text-indent: 6rem;
+  text-indent: 4rem;
   width: 100%;
   color: rgb(210, 31, 31);
   line-height: 1.2rem;
   font-size: 0.8rem;
 }
 
+.align-right {
+  justify-content: right;
+}
+
+.code-canvas {
+  height: 4rem;
+  width: 8rem;
+  margin: .5rem;
+  cursor: pointer;
+}
+
 .submit {
-  margin-left: 6rem;
+  margin-left: 4rem;
 }

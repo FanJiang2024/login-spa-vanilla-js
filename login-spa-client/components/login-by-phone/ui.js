@@ -17,6 +17,9 @@ export const uiLoginByPhone = () => {
         <label class="label" for="phone">验证码：</label>
         <input class="input code" id="code" type="number" />
       </div>
+      <div class="get-code-wrapper align-right">
+        <button id="get-code" class="get-code">获取验证码</button>
+      </div>
       <p id="code-err-msg" class="code-err-msg  err-msg"></p>
     </div>
     <button id="submit" class="submit">登陆</button>
