@@ -1,14 +1,13 @@
 import { canvasFingerPrint, checkCode, checkPhone, debounce } from "../../lib";
+import { request } from "../../requests";
 import { navigate } from "../../router/util";
-import { uiLoginByPhone } from "./ui"
+import { uiLoginByPhone } from "./ui";
+import { store } from "../../lib/state";
 
 const CountDown = 60;
 
 export const setupLoginByPhone = (parent) => {
   const wrapper = uiLoginByPhone();
-
-  const fingerPrint = canvasFingerPrint();
-  console.log("fingerPrint: ", fingerPrint);
 
   let phone, code, isPhonePassed = false, isCodePassed = false;
   let countDownId = null;
@@ -85,13 +84,19 @@ export const setupLoginByPhone = (parent) => {
 
   submit.onclick = (e) => {
     e.stopPropagation();
-    const { closeModal } = window.store;
-    closeModal && closeModal();
     if(isCodePassed && isPhonePassed) {
-      setTimeout(() => {
-        document.cookie = "pass";
-        navigate("/account");
-      }, 500)
+      const { closeModal } = store;
+      closeModal && closeModal();
+      request("/api/v1/login/by-phone", "POST", {
+        phone, 
+        code,
+        fingerPrint: canvasFingerPrint()
+      }).then(({data={}, response={}}) => {
+        const { code } = data;
+        if(code && code == 200) {
+          navigate("/account");
+        }
+      })
     }
   }
 

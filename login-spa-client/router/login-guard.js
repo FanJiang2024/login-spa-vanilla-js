@@ -1,10 +1,15 @@
 import { setupModal } from "../components/modal";
+import { request } from "../requests";
+import { store } from "../lib/state";
 
 export const loginGuard = async () => {
-
-  if (!document.cookie) {
-    window.store = { closeModal: setupModal() };
-    return Promise.reject({ status: 401, msg: "请先登陆" });
-  }
-  return Promise.resolve({ status: 200 });
+  return request("/api/v1/account/info", "GET").then(({ data={} }) => {
+    const { code } = data;
+    if (code == 200) {
+      return Promise.resolve(data);
+    } else {
+      store["closeModal"] = setupModal();
+      return Promise.reject(data);
+    }
+  });
 };
